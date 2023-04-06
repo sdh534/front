@@ -1,0 +1,15 @@
+<!-- 틀만 관리해보자! -->
+<html>
+<head>
+<!--(행으로) 프레임을 쪼개는 명령--> 
+<frameset rows="150px,*,100px" frameborder="0"> <!--위-중앙-아래 3분할-->
+  <frame src="top.html" name="top"></frame>
+    <frameset cols="200px,*,150px"><!--중앙 3분할-->
+      <frame src="left.html" name="left"></frame>
+      <frame src="center.html" name="content"></frame>
+      <frame src="right.html" name="right"></frame>
+    </frameset>
+  <frame src="bottom.html" name="bottom"></frame>
+</frameset>
+</head>
+</html>
