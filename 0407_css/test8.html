@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test8.html</title>
+  <link type="text/css" rel="stylesheet" href="test5.css">
+  <style>
+    /* 전체 태그에 기본값을 주는법 */
+    body { /* *:전체 선택자(바디 바깥에도 쓸 수 있음, 큰개념 )  */
+      font-size: 9pt;
+    }
+
+    p {font-size: 10px;}
+    h1 {color:rgb(80, 151, 186);}
+    #a1 { /* 아이디.. */
+      font-size:15pt;
+      color:brown;
+    }
+    .b1{
+      background-color: blue;
+      color: aliceblue;
+    }
+    div.b1, .c1 { /* 쉼표를 통한 이중 선택(형제 선택자) */
+      font-size: 20pt;
+      color:yellow;
+    }
+    .b2 { /* span 클래스, 해당 글자만 */
+      background-color: aqua;
+      color: rgb(0, 0, 0);
+    }
+  </style>
+</head>
+<!-- 인라인>내부>외부 우선순위  -->
+<body> 
+  <h2>스타일 혼용 사용예</h2>
+  <p>1.안녕하세요</p>
+  <h1>2.안녕하세요</h1>
+  <p style="font-size:60pt">3.안녕하세요</p>
+  <h3>4.안녕하세요</h3>
+  <div class="c1">5.안녕하세요</div>
+  <p class="b1">6.안녕하세요</p>
+  <div class="c1">7.안녕하세요</div>
+  <div id="a1">8.안녕하세요</div>
+  <span class="b2">9.안녕하세요</ㄴ>
+  <div class="b1 c1">10.안녕하세요</div> 
+  <span class="b2">11.안녕하세요</span>
+
+</body>
+</html>
