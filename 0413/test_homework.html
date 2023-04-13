@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test3.html</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    'use strict';
+    // 구구단 메서드
+    function gugudan() {
+        let dan_start = document.getElementById("dan_start").value.trim();
+        let dan_end = document.getElementById("dan_end").value.trim();
+        let dan_cnt = document.getElementById("dan_cnt").value.trim();
+        if (dan_start == "" || dan_end == "" || dan_cnt =="") {
+            alert("단을 입력하세요.")
+            return false;
+        }
+        let str = '', res;
+        let start = Math.min(dan_start, dan_end); //작은 쪽을 가져옴
+        let end = Math.max(dan_start, dan_end); //큰쪽 가져옴
+        
+        str='<table class="table-bordered" style="width:100%">'
+        str+='<tr>'
+        let cnt =0;
+        for (let i = start; i < end+1; i++) {
+            str+='<td class="table-primary" style="text-align:center;"><b>'+i+'단</b></td>';
+            str+='<td style="text-align:center;">';
+                for(let j = 1; j <10; j++){
+                res = i + " * " + j + " = " + (i * j) + "<br>";
+                str += res;
+            }
+            str+='</td>'
+            cnt++;
+            if(cnt%dan_cnt==0) str+="</tr>"
+        }
+        
+        str+='</table>'
+        demo.innerHTML += str;
+    }
+    // 화면 초기화
+    function cleanCheck() {
+      // 값 유지
+      document.getElementById("dan_start").value = 1;
+      document.getElementById("dan_end").value = 1;
+      document.getElementById("dan_cnt").value = 1;
+      demo.innerText = '';
+      // 새로고침
+      // location.reload();
+    }
+  </script>
+</head>
+<body>
+  <p><br /></p>
+  <div class="container">
+    <h2>구구단 연습</h2>
+    <p>출력할 시작단과 끝단을 입력하세요.</p>
+    <div>조건 <br>
+      1. 입력된 시작단이 끝단보다 크면 두 수를 비교해서 작은단부터 출력<br>
+      2. 출력되는 단은 가로방향으로 출력 (한 행에 출력할 횟수 입력)
+    </div>1
+    <p>
+      시작단 : <input type="number" name="dan" id="dan_start" value="1" autofocus />
+      끝단 : <input type="number" name="dan" id="dan_end" value="1"  />
+      출력 횟수 : <input type="number" name="dan" id="dan_cnt" value="1"  />
+      <input type="button" value="for문연습" onclick="gugudan()" class="btn btn-success"/>
+      <input type="button" value="다시입력" onclick="cleanCheck()" class="btn btn-warning"/>
+    </p>
+    <hr />
+    <div id="demo"></div>
+  </div>
+  <p><br /></p>
+</body>
+</html>
