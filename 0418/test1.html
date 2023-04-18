@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0418 09:42 test1.html</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    'use strict';
+    
+    // $(document).ready(function() {
+    $(function() {
+      
+      $('.container input[name="choiceBtn1"]').click(function() {
+        let fruitArray = [];
+        //each()이용
+        $('.container input[class="fruit"]').each((index, item) => {
+          if($(item).is(':checked'))
+            fruitArray.push($(item).val());
+        });
+        $('#demo').html(fruitArray);
+        $('#demo').html(fruitArray.join("/"));
+        console.log(fruitArray);
+      });
+
+      $('.container input[name="choiceBtn2"]').click(function() {
+        //map()이용
+        let fruitArray2 = $('.container input[class="fruit"]').map((index, item) => {
+          if($(item).is(':checked'))
+            return $(item).val(); //그냥 이렇게 읽으면 안되고 map인 경우에는 get으로 가져와야함 
+        }).get().join("/");
+        // $('#demo').html(fruitArra2y);
+        $('#demo').html(fruitArray2);
+        console.log(fruitArray2);
+      });
+    });
+    </script>
+</head>
+<body>
+  <p><br/></p>
+  <div class="container">
+    <h2>좋아하는 과일은?</h2>
+    <form name="myform">
+      <p>
+        <input type="checkbox" name="fruit" value="사과" class="fruit"/> 사과 &nbsp;
+        <input type="checkbox" name="fruit" value="배" class="fruit"/> 배 &nbsp;
+        <input type="checkbox" name="fruit" value="바나나" class="fruit"/> 바나나 &nbsp;
+        <input type="checkbox" name="fruit" value="키위" class="fruit"/> 키위 &nbsp;
+        <input type="checkbox" name="fruit" value="포도" class="fruit"/> 포도 &nbsp;
+        <input type="checkbox" name="fruit" value="수박" class="fruit"/> 수박 &nbsp;
+        <input type="checkbox" name="fruit" value="참외" class="fruit"/> 참외 &nbsp;
+        <input type="checkbox" name="fruit" value="딸기" class="fruit"/> 딸기 &nbsp;
+      </p>
+      <p>
+        <input type="button" value="선택(each)" name="choiceBtn1" class="btn btn-success"/>
+        <input type="button" value="선택(map)" name="choiceBtn2" class="btn btn-primary"/>
+        <input type="button" value="취소" name="choiceBtn2" onclick="location.reload()" class="btn btn-danger"/>
+      </p>
+    </form>
+    <hr/>
+    <div id="demo"></div>
+  </div>
+</body>
+</html>
